@@ -14,7 +14,7 @@
         <button class="quiet-button" type="button" aria-label="查看本月观演时长"><span>8月</span><b>02</b></button>
       </header>
 
-      <section class="screen screen--active" id="screen-explore" aria-labelledby="explore-title">
+      <section class="screen" id="screen-explore" aria-labelledby="explore-title">
         <p class="eyebrow" data-i18n="exploreEyebrow">CURATED FOR TONIGHT</p>
         <h1 id="explore-title" data-i18n="exploreTitle">今晚，想看哪一场？</h1>
         <p class="screen-intro" data-i18n="exploreIntro">从一场演出开始，给时间一个值得期待的结尾。</p>
@@ -33,7 +33,8 @@
           <p class="poster-meta" id="poster-meta">ONE NIGHT ONLY · 2026</p>
         </article>
         <div class="setting-card" id="settings-list" aria-label="本场演出信息"></div>
-        <a class="continue-button" href="focus.html">进入剧场落座 <span>→</span></a>
+        <label class="save-show" id="save-show-row"><input id="save-show" type="checkbox" /><span class="save-show__box" aria-hidden="true">✓</span><span>将这场演出加入探索剧目</span></label>
+        <a class="continue-button" id="print-ticket" href="ticket.html">打印入场券 <span>→</span></a>
       </section>
 
       <section class="screen" id="screen-wallet" aria-labelledby="wallet-title">
@@ -42,8 +43,8 @@
         <p class="screen-intro" data-i18n="walletIntro">每张票根，都是一段已经好好度过的时间。</p>
         <div class="ticket-fan" id="ticket-fan" aria-label="已观看演出票"></div>
         <div class="wallet-summary">
-          <div><span data-i18n="monthTotal">本月观演</span><b data-i18n="zeroMinutes">0 分钟</b></div>
-          <div><span data-i18n="collected">已收藏</span><b data-i18n="zeroTickets">0 张票根</b></div>
+          <div><span data-i18n="monthTotal">本月观演</span><b id="month-minutes" data-i18n="zeroMinutes">0 分钟</b></div>
+          <div><span data-i18n="collected">已收藏</span><b id="ticket-total" data-i18n="zeroTickets">0 张票根</b></div>
         </div>
         <p class="empty-note" data-i18n="emptyNote">第一场演出结束后，票根会在这里慢慢铺开。</p>
       </section>
