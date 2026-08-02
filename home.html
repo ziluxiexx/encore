@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f4ef" />
+    <title>Encore — 剧院</title>
+    <link rel="stylesheet" href="home.css" />
+  </head>
+  <body>
+    <main class="theatre-app">
+      <header class="app-header">
+        <a class="brand" href="index.html">Encore</a>
+        <button class="quiet-button" type="button" aria-label="查看本月观演时长"><span>8月</span><b>02</b></button>
+      </header>
+
+      <section class="screen screen--active" id="screen-explore" aria-labelledby="explore-title">
+        <p class="eyebrow" data-i18n="exploreEyebrow">CURATED FOR TONIGHT</p>
+        <h1 id="explore-title" data-i18n="exploreTitle">今晚，想看哪一场？</h1>
+        <p class="screen-intro" data-i18n="exploreIntro">从一场演出开始，给时间一个值得期待的结尾。</p>
+        <div class="show-list" id="show-list"></div>
+      </section>
+
+      <section class="screen screen--active" id="screen-custom" aria-labelledby="custom-title">
+        <p class="eyebrow" data-i18n="customEyebrow">YOUR PERSONAL MATINÉE</p>
+        <h1 id="custom-title">为自己安排一场演出。</h1>
+        <p class="screen-intro" id="custom-subtitle">从剧名到座位，为自己安排好这一晚。</p>
+        <article class="poster-card" id="poster-card" aria-label="自定义音乐剧海报">
+          <div class="poster-stars" aria-hidden="true">✦　·　✦</div>
+          <div class="poster-arch" aria-hidden="true"><span></span></div>
+          <p class="poster-kicker" id="poster-kicker">AN ENCORE ORIGINAL</p>
+          <h2 id="poster-title">一段属于你的<br />安静时光</h2>
+          <p class="poster-meta" id="poster-meta">ONE NIGHT ONLY · 2026</p>
+        </article>
+        <div class="setting-card" id="settings-list" aria-label="本场演出信息"></div>
+        <a class="continue-button" href="focus.html">进入剧场落座 <span>→</span></a>
+      </section>
+
+      <section class="screen" id="screen-wallet" aria-labelledby="wallet-title">
+        <p class="eyebrow" data-i18n="walletEyebrow">YOUR COLLECTED ENCORES</p>
+        <h1 id="wallet-title" data-i18n="walletTitle">我的票夹</h1>
+        <p class="screen-intro" data-i18n="walletIntro">每张票根，都是一段已经好好度过的时间。</p>
+        <div class="ticket-fan" id="ticket-fan" aria-label="已观看演出票"></div>
+        <div class="wallet-summary">
+          <div><span data-i18n="monthTotal">本月观演</span><b data-i18n="zeroMinutes">0 分钟</b></div>
+          <div><span data-i18n="collected">已收藏</span><b data-i18n="zeroTickets">0 张票根</b></div>
+        </div>
+        <p class="empty-note" data-i18n="emptyNote">第一场演出结束后，票根会在这里慢慢铺开。</p>
+      </section>
+
+      <nav class="tab-bar" aria-label="主导航">
+        <button class="tab" type="button" data-screen="explore">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m14.7 9.3-1.9 4.3-4.3 1.9 1.9-4.3 4.3-1.9Z"/></svg>
+          <span data-i18n="navExplore">探索剧目</span>
+        </button>
+        <button class="tab tab--active" type="button" data-screen="custom">
+          <span class="plus-mark" aria-hidden="true">+</span>
+          <span data-i18n="navCustom">自定义剧目</span>
+        </button>
+        <button class="tab" type="button" data-screen="wallet">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-7Z"/><path d="M8.5 6.5v11M15.5 6.5v11M4.5 10h3M16.5 10h3M4.5 14h3M16.5 14h3"/></svg>
+          <span data-i18n="navWallet">我的票夹</span>
+        </button>
+      </nav>
+    </main>
+    <script src="home.js"></script>
+  </body>
+</html>

@@ -18,10 +18,9 @@ const copy = {
 };
 
 const toggle = document.querySelector(".language-button");
-let language = "zh";
+let language = localStorage.getItem("encore-language") || "zh";
 
-toggle.addEventListener("click", () => {
-  language = language === "zh" ? "en" : "zh";
+function applyLanguage() {
   document.documentElement.lang = language === "zh" ? "zh-CN" : "en";
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     element.innerHTML = copy[language][element.dataset.i18n];
@@ -29,4 +28,12 @@ toggle.addEventListener("click", () => {
   document.querySelectorAll(".language-option").forEach((option) => {
     option.classList.toggle("language-option--active", option.dataset.language === language);
   });
+}
+
+toggle.addEventListener("click", () => {
+  language = language === "zh" ? "en" : "zh";
+  localStorage.setItem("encore-language", language);
+  applyLanguage();
 });
+
+applyLanguage();
