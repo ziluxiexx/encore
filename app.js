@@ -36,4 +36,5 @@ toggle.addEventListener("click", () => {
   applyLanguage();
 });
 
+
 applyLanguage();
