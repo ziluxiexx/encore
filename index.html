@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f4ef" />
+    <title>Encore — 让专注成为一场演出</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="welcome-page">
+      <nav class="top-bar" aria-label="顶部导航">
+        <span class="brand">Encore</span>
+        <button class="language-button" type="button" aria-label="Switch language">
+          <span class="language-option language-option--active" data-language="zh">中</span>
+          <span class="language-divider" aria-hidden="true">/</span>
+          <span class="language-option" data-language="en">EN</span>
+        </button>
+      </nav>
+
+      <section class="hero" aria-labelledby="welcome-title">
+        <p class="eyebrow" data-i18n="eyebrow">YOUR FOCUS, ON STAGE</p>
+        <h1 id="welcome-title" data-i18n="title">让专注，成为一场<br />值得谢幕的演出。</h1>
+        <p class="intro" data-i18n="intro">
+          选择一场演出，走进剧院。<br />
+          时间落幕时，收下一张属于你的票根。
+        </p>
+      </section>
+
+      <section class="stage-card" aria-label="Encore 剧院预览">
+        <div class="stage-card__glow"></div>
+        <div class="proscenium" aria-hidden="true">
+          <div class="curtain curtain--left"></div>
+          <div class="curtain curtain--right"></div>
+          <div class="stage-light"></div>
+        </div>
+        <p class="stage-caption" data-i18n="stageCaption">今晚的演出，即将开场</p>
+      </section>
+
+      <div class="welcome-actions">
+        <a class="primary-button" href="home.html">
+          <span data-i18n="start">进入剧院</span>
+          <span class="button-arrow" aria-hidden="true">→</span>
+        </a>
+        <p class="hint" data-i18n="hint">早点进场，选一个舒适的位置。</p>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
