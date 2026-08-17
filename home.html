@@ -11,7 +11,10 @@
     <main class="theatre-app">
       <header class="app-header">
         <a class="brand" href="index.html">Encore</a>
-        <button class="quiet-button" type="button" aria-label="查看本月观演时长"><span id="current-month"></span><b id="current-day"></b></button>
+        <div class="header-controls">
+          <button class="language-toggle" id="language-toggle" type="button" aria-label="切换语言"><span>中</span><i>/</i><span>EN</span></button>
+          <button class="quiet-button" type="button" aria-label="查看本月观演时长"><span id="current-month"></span><b id="current-day"></b></button>
+        </div>
       </header>
 
       <section class="screen" id="screen-explore" aria-labelledby="explore-title">
@@ -47,6 +50,7 @@
           <div><span data-i18n="collected">已收藏</span><b id="ticket-total" data-i18n="zeroTickets">0 张票根</b></div>
         </div>
         <p class="empty-note" data-i18n="emptyNote">第一场演出结束后，票根会在这里慢慢铺开。</p>
+        <button class="signature-test-button" id="view-all-tickets" type="button" style="display:block;margin:17px auto 0;padding:0;border:0;color:#6c2635;background:transparent;font-size:11px;font-weight:650;text-decoration:underline;text-underline-offset:4px">查看全部票根</button>
       </section>
 
       <nav class="tab-bar" aria-label="主导航">
@@ -63,7 +67,40 @@
           <span data-i18n="navWallet">我的票夹</span>
         </button>
       </nav>
+      <section class="signature-dialog" id="signature-dialog" aria-labelledby="signature-title" aria-hidden="true" hidden>
+        <div class="signature-sheet">
+          <div class="signature-sheet__header">
+            <div><p id="signature-kicker">ENCORE / TICKET STUB</p><h2 id="signature-title">为我的票根签名</h2></div>
+            <button class="signature-close" id="signature-close" type="button" aria-label="关闭">×</button>
+          </div>
+          <p class="signature-ticket-name" id="signature-ticket-name"></p>
+          <div class="signature-canvas-wrap"><canvas id="signature-canvas" aria-label="在票根上签名或绘画"></canvas></div>
+          <div class="signature-tools" aria-label="马克笔颜色">
+            <span id="signature-tool-label">选择马克笔</span>
+            <button class="marker marker--gold is-selected" type="button" data-color="#b98a36" aria-label="金色"></button>
+            <button class="marker marker--silver" type="button" data-color="#8e949d" aria-label="银色"></button>
+            <button class="marker marker--blue" type="button" data-color="#3d6f9e" aria-label="蓝色"></button>
+            <button class="marker marker--black" type="button" data-color="#24211e" aria-label="黑色"></button>
+            <button class="signature-undo" id="signature-undo" type="button">撤回</button>
+            <button class="signature-clear" id="signature-clear" type="button">清除</button>
+          </div>
+          <p class="signature-note" id="signature-note">你的笔迹会保存到这张票根。</p>
+        </div>
+      </section>
+      <section class="ticket-detail" id="ticket-detail" aria-labelledby="ticket-detail-title" aria-hidden="true" hidden>
+        <article class="ticket-detail__paper">
+          <button class="ticket-detail__close" id="ticket-detail-close" type="button" aria-label="关闭">×</button>
+          <p>ENCORE / TICKET STUB</p>
+          <h2 id="ticket-detail-title"></h2>
+          <span id="ticket-detail-venue"></span>
+          <div class="ticket-detail__rule"></div>
+          <dl><div><dt>FOCUS TIME</dt><dd id="ticket-detail-time"></dd></div><div><dt>SEAT</dt><dd id="ticket-detail-seat"></dd></div><div><dt>STATUS</dt><dd id="ticket-detail-status"></dd></div></dl>
+          <img id="ticket-detail-signature" alt="" hidden />
+          <button class="ticket-detail__sign" id="ticket-detail-sign" type="button">为我的票根签名</button>
+        </article>
+      </section>
     </main>
     <script src="home.js"></script>
+    <script>document.querySelector("#screen-wallet .eyebrow").textContent=localStorage.getItem("encore-language")==="en"?"VIEW YOUR COLLECTION":"查看收藏";document.querySelector("#view-all-tickets").addEventListener("click",()=>{location.href="tickets.html";});</script>
   </body>
 </html>

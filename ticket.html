@@ -1,1 +1,38 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="theme-color" content="#f7f4ef" /><title>Encore — 打印票根</title><link rel="stylesheet" href="ticket.css" /></head><body><main class="ticket-page"><header><button class="back" type="button" aria-label="返回">‹</button><span class="brand">Encore</span><span class="header-space"></span></header><section class="print-intro"><p>TICKET STUB</p><h1>你的票根<br />正在打印。</h1><span class="printer-light"></span></section><section class="printer" aria-label="票根打印机"><div class="printer-slot"></div><article class="printed-ticket" id="printed-ticket"><p class="ticket-brand">ENCORE / TICKET STUB</p><h2 id="ticket-title"></h2><p class="ticket-venue" id="ticket-venue"></p><div class="ticket-rule"></div><dl><div><dt>FOCUS TIME</dt><dd id="ticket-time"></dd></div><div><dt>INTERMISSION</dt><dd id="ticket-break"></dd></div><div><dt>SEAT</dt><dd id="ticket-seat"></dd></div></dl><p class="ticket-code">E N C O R E · 2 0 2 6</p></article></section><a class="seat-button" href="focus.html">进入剧场落座 <span>→</span></a></main><script src="ticket.js"></script></body></html>
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f4ef" />
+    <title>Encore — 打印票根</title>
+    <link rel="stylesheet" href="ticket.css" />
+    <style>
+      @keyframes ticket-eject {
+        from { opacity:0; transform:rotate(90deg) translateX(-28px); }
+        to { opacity:1; transform:rotate(90deg) translateX(46px); }
+      }
+      .printed-ticket { animation:ticket-eject .62s cubic-bezier(.22,.8,.24,1) both !important; }
+      .printed-ticket h2 { margin:10px 0 3px; font-size:23px; }
+      .ticket-venue { font-size:10px; }
+      .ticket-rule { margin:9px 0; }
+      .printed-ticket dl { gap:7px; }
+      .printed-ticket dd { margin-top:2px; font-size:10px; }
+      .ticket-code { margin:8px 0 0; }
+    </style>
+  </head>
+  <body>
+    <main class="ticket-page">
+      <header><button class="back" type="button" aria-label="返回">‹</button><span class="brand">Encore</span><span class="header-space"></span></header>
+      <section class="print-intro"><p>TICKET STUB</p><h1>你的票根<br />正在打印。</h1><span class="printer-light"></span></section>
+      <section class="printer" aria-label="票根打印机">
+        <div class="printer-slot"></div>
+        <article class="printed-ticket" id="printed-ticket" style="width:278px;min-height:174px;height:174px;margin-top:70px;transform:rotate(90deg)">
+          <p class="ticket-brand">ENCORE / TICKET STUB</p><h2 id="ticket-title"></h2><p class="ticket-venue" id="ticket-venue"></p><div class="ticket-rule"></div>
+          <dl><div><dt>FOCUS TIME</dt><dd id="ticket-time"></dd></div><div><dt>INTERMISSION</dt><dd id="ticket-break"></dd></div><div><dt>SEAT</dt><dd id="ticket-seat"></dd></div></dl><p class="ticket-code">E N C O R E · 2 0 2 6</p>
+        </article>
+      </section>
+      <a class="seat-button" href="focus.html">进入剧场落座 <span>→</span></a>
+    </main>
+    <script src="ticket.js"></script>
+  </body>
+</html>

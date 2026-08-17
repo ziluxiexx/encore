@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f4ef" />
+    <title>Encore — 全部票根</title>
+    <link rel="stylesheet" href="tickets.css" />
+  </head>
+  <body>
+    <main class="ticket-archive">
+      <header><a class="archive-back" href="home.html#wallet" aria-label="返回票夹">‹</a><span class="brand">Encore</span><span></span></header>
+      <section class="archive-intro"><p>YOUR COLLECTED ENCORES</p><h1>全部票根</h1><span id="archive-count"></span></section>
+      <section class="depth-carousel" id="depth-carousel" aria-label="全部票根轮播" tabindex="0">
+        <div class="depth-carousel__stage" id="ticket-stage"></div>
+        <button class="carousel-arrow carousel-arrow--prev" id="previous-ticket" type="button" aria-label="上一张票根">‹</button>
+        <button class="carousel-arrow carousel-arrow--next" id="next-ticket" type="button" aria-label="下一张票根">›</button>
+        <div class="carousel-dots" id="carousel-dots" aria-label="票根位置"></div>
+      </section>
+      <p class="archive-note" id="archive-note">左右滑动或使用箭头翻阅你的票根。</p>
+    </main>
+    <script src="tickets.js"></script>
+  </body>
+</html>
