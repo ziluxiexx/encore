@@ -9,10 +9,15 @@ const count = document.querySelector("#archive-count");
 const note = document.querySelector("#archive-note");
 
 document.documentElement.lang = zh ? "zh-CN" : "en";
+const today = new Date();
+document.querySelector("#archive-month").textContent = zh ? `${today.getMonth() + 1}月` : today.toLocaleDateString("en-US", { month:"short" });
+document.querySelector("#archive-day").textContent = String(today.getDate());
+document.querySelector("#archive-language").addEventListener("click", () => { localStorage.setItem("encore-language", zh ? "en" : "zh"); location.reload(); });
 document.querySelector(".archive-intro p").textContent = zh ? "查看收藏" : "VIEW YOUR COLLECTION";
 document.querySelector(".archive-intro h1").textContent = zh ? "全部票根" : "All tickets";
-note.textContent = zh ? "左右滑动或使用箭头翻阅你的票根。" : "Swipe or use the arrows to browse your tickets.";
+note.textContent = tickets.length ? (zh ? "左右滑动或使用箭头翻阅你的票根。" : "Swipe or use the arrows to browse your tickets.") : (zh ? "暂时还没有票根收藏，快去完成一场专注吧。" : "No tickets collected yet. Complete a focus session to begin.");
 count.textContent = zh ? `${tickets.length} 张收藏票根` : `${tickets.length} collected tickets`;
+if (!tickets.length) { document.querySelector("#previous-ticket").hidden = true; document.querySelector("#next-ticket").hidden = true; }
 
 function key(ticket) {
   return `v2-${ticket.id || `legacy-${ticket.completedAt || ticket.completedDate || "draft"}-${ticket.title || "ticket"}`}`;

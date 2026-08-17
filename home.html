@@ -6,6 +6,7 @@
     <meta name="theme-color" content="#f7f4ef" />
     <title>Encore — 剧院</title>
     <link rel="stylesheet" href="home.css" />
+    <style>.form-row--title{position:relative}.title-hint,.venue-hint{position:absolute;right:16px;bottom:6px;color:#a15e52;font-size:10px;line-height:1.2}.form-row--title:has(.title-hint:not([hidden])),.form-row:has(.venue-hint:not([hidden])){min-height:70px;padding-bottom:18px}</style>
   </head>
   <body>
     <main class="theatre-app">
@@ -50,7 +51,7 @@
           <div><span data-i18n="collected">已收藏</span><b id="ticket-total" data-i18n="zeroTickets">0 张票根</b></div>
         </div>
         <p class="empty-note" data-i18n="emptyNote">第一场演出结束后，票根会在这里慢慢铺开。</p>
-        <button class="signature-test-button" id="view-all-tickets" type="button" style="display:block;margin:17px auto 0;padding:0;border:0;color:#6c2635;background:transparent;font-size:11px;font-weight:650;text-decoration:underline;text-underline-offset:4px">查看全部票根</button>
+        <button class="continue-button" id="view-all-tickets" type="button" style="width:100%;margin-top:18px;border:0">查看全部票根 <span>→</span></button>
       </section>
 
       <nav class="tab-bar" aria-label="主导航">
@@ -96,11 +97,11 @@
           <div class="ticket-detail__rule"></div>
           <dl><div><dt>FOCUS TIME</dt><dd id="ticket-detail-time"></dd></div><div><dt>SEAT</dt><dd id="ticket-detail-seat"></dd></div><div><dt>STATUS</dt><dd id="ticket-detail-status"></dd></div></dl>
           <img id="ticket-detail-signature" alt="" hidden />
-          <button class="ticket-detail__sign" id="ticket-detail-sign" type="button">为我的票根签名</button>
+          <div class="ticket-detail__actions" style="position:absolute;z-index:3;right:20px;bottom:17px;display:flex;gap:8px"><button class="ticket-detail__download" id="ticket-detail-download" type="button" style="padding:8px 11px;border:1px solid #6c2635;border-radius:8px;color:#6c2635;background:#fffaf0;font-size:11px;font-weight:650">保存图片</button><button class="ticket-detail__sign" id="ticket-detail-sign" type="button" style="position:static">为我的票根签名</button></div>
         </article>
       </section>
     </main>
     <script src="home.js"></script>
-    <script>document.querySelector("#screen-wallet .eyebrow").textContent=localStorage.getItem("encore-language")==="en"?"VIEW YOUR COLLECTION":"查看收藏";document.querySelector("#view-all-tickets").addEventListener("click",()=>{location.href="tickets.html";});</script>
+    <script>const isEncoreEnglish=localStorage.getItem("encore-language")==="en";document.querySelector("#screen-wallet .eyebrow").textContent=isEncoreEnglish?"VIEW YOUR COLLECTION":"查看收藏";document.querySelector(".empty-note").textContent=isEncoreEnglish?"After your first performance, your tickets will gather here. Open one to sign it or save it as an image.":"第一场演出结束后，票根会在这里慢慢铺开。点开票根，还可以为它签名并保存为图片。";document.querySelector("#view-all-tickets").innerHTML=isEncoreEnglish?"View all tickets <span>→</span>":"查看全部票根 <span>→</span>";document.querySelector("#view-all-tickets").addEventListener("click",()=>{location.href="tickets.html";});</script>
   </body>
 </html>

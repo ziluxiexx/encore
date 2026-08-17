@@ -13,9 +13,13 @@
       }
       .printed-ticket { animation:ticket-eject .62s cubic-bezier(.22,.8,.24,1) both !important; }
       .printed-ticket h2 { margin:10px 0 3px; font-size:23px; }
-      .ticket-venue { font-size:10px; }
+      .printed-ticket h2 { display:-webkit-box; height:40px; overflow:hidden; line-height:1.04; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
+      .ticket-venue { display:-webkit-box; height:24px; overflow:hidden; font-size:10px; line-height:1.2; -webkit-box-orient:vertical; -webkit-line-clamp:2; }
       .ticket-rule { margin:9px 0; }
       .printed-ticket dl { gap:7px; }
+      .printed-ticket dl { grid-template-columns:repeat(2,1fr); gap:6px 10px; }
+      .printed-ticket dl div:last-child { grid-column:auto; }
+      .printed-ticket dt { font-size:7px; }
       .printed-ticket dd { margin-top:2px; font-size:10px; }
       .ticket-code { margin:8px 0 0; }
     </style>
@@ -28,7 +32,7 @@
         <div class="printer-slot"></div>
         <article class="printed-ticket" id="printed-ticket" style="width:278px;min-height:174px;height:174px;margin-top:70px;transform:rotate(90deg)">
           <p class="ticket-brand">ENCORE / TICKET STUB</p><h2 id="ticket-title"></h2><p class="ticket-venue" id="ticket-venue"></p><div class="ticket-rule"></div>
-          <dl><div><dt>FOCUS TIME</dt><dd id="ticket-time"></dd></div><div><dt>INTERMISSION</dt><dd id="ticket-break"></dd></div><div><dt>SEAT</dt><dd id="ticket-seat"></dd></div></dl><p class="ticket-code">E N C O R E · 2 0 2 6</p>
+          <dl><div><dt>DATE</dt><dd id="ticket-date"></dd></div><div><dt>FOCUS</dt><dd id="ticket-time"></dd></div><div><dt>BREAK</dt><dd id="ticket-break"></dd></div><div><dt>SEAT</dt><dd id="ticket-seat"></dd></div></dl>
         </article>
       </section>
       <a class="seat-button" href="focus.html">进入剧场落座 <span>→</span></a>
