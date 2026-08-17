@@ -36,5 +36,16 @@ toggle.addEventListener("click", () => {
   applyLanguage();
 });
 
+document.querySelector(".primary-button").addEventListener("click", (event) => {
+  event.preventDefault();
+  const destination = event.currentTarget.href;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    window.location.href = destination;
+    return;
+  }
+  document.body.classList.add("is-entering");
+  requestAnimationFrame(() => requestAnimationFrame(() => document.body.classList.add("is-opening")));
+  window.setTimeout(() => { window.location.href = destination; }, 760);
+});
 
 applyLanguage();
