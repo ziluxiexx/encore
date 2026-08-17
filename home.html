@@ -6,14 +6,14 @@
     <meta name="theme-color" content="#f7f4ef" />
     <title>Encore — 剧院</title>
     <link rel="stylesheet" href="home.css" />
-    <style>.form-row--title{position:relative}.title-hint,.venue-hint{position:absolute;right:16px;bottom:6px;color:#a15e52;font-size:10px;line-height:1.2}.form-row--title:has(.title-hint:not([hidden])),.form-row:has(.venue-hint:not([hidden])){min-height:70px;padding-bottom:18px}</style>
+    <style>.form-row--title{position:relative}.title-hint,.venue-hint{position:absolute;right:16px;bottom:6px;color:#a15e52;font-size:10px;line-height:1.2}.form-row--title:has(.title-hint:not([hidden])),.form-row:has(.venue-hint:not([hidden])){min-height:70px;padding-bottom:18px}.header-controls{height:35px;align-items:center;gap:12px}.language-toggle{display:flex;align-items:center;height:35px;padding:0;line-height:1}.quiet-button{display:flex;align-items:center;height:35px;padding:0;border:0;line-height:1}.language-toggle [data-language]{color:#b7aea5;transition:color .18s ease}.language-toggle [data-language].is-current{color:#6c2635}.language-toggle i{color:#bbb2a8}</style>
   </head>
   <body>
     <main class="theatre-app">
       <header class="app-header">
         <a class="brand" href="index.html">Encore</a>
         <div class="header-controls">
-          <button class="language-toggle" id="language-toggle" type="button" aria-label="切换语言"><span>中</span><i>/</i><span>EN</span></button>
+          <button class="language-toggle" id="language-toggle" type="button" aria-label="切换语言"><span data-language="zh">中</span><i>/</i><span data-language="en">EN</span></button>
           <button class="quiet-button" type="button" aria-label="查看本月观演时长"><span id="current-month"></span><b id="current-day"></b></button>
         </div>
       </header>
@@ -102,6 +102,6 @@
       </section>
     </main>
     <script src="home.js"></script>
-    <script>const isEncoreEnglish=localStorage.getItem("encore-language")==="en";document.querySelector("#screen-wallet .eyebrow").textContent=isEncoreEnglish?"VIEW YOUR COLLECTION":"查看收藏";document.querySelector(".empty-note").textContent=isEncoreEnglish?"After your first performance, your tickets will gather here. Open one to sign it or save it as an image.":"第一场演出结束后，票根会在这里慢慢铺开。点开票根，还可以为它签名并保存为图片。";document.querySelector("#view-all-tickets").innerHTML=isEncoreEnglish?"View all tickets <span>→</span>":"查看全部票根 <span>→</span>";document.querySelector("#view-all-tickets").addEventListener("click",()=>{location.href="tickets.html";});</script>
+    <script>const isEncoreEnglish=localStorage.getItem("encore-language")==="en";document.querySelectorAll(".language-toggle [data-language]").forEach(node=>node.classList.toggle("is-current",node.dataset.language===(isEncoreEnglish?"en":"zh")));document.querySelector("#screen-wallet .eyebrow").textContent=isEncoreEnglish?"VIEW YOUR COLLECTION":"查看收藏";document.querySelector(".empty-note").textContent=isEncoreEnglish?"After your first performance, your tickets will gather here. Open one to sign it or save it as an image.":"第一场演出结束后，票根会在这里慢慢铺开。点开票根，还可以为它签名并保存为图片。";document.querySelector("#view-all-tickets").innerHTML=isEncoreEnglish?"View all tickets <span>→</span>":"查看全部票根 <span>→</span>";document.querySelector("#view-all-tickets").addEventListener("click",()=>{location.href="tickets.html";});</script>
   </body>
 </html>

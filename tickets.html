@@ -6,11 +6,11 @@
     <meta name="theme-color" content="#f7f4ef" />
     <title>Encore — 全部票根</title>
     <link rel="stylesheet" href="tickets.css" />
-    <style>header{grid-template-columns:35px 1fr auto}.archive-tools{display:flex;align-items:center;gap:12px;height:35px}.archive-language{display:flex;align-items:center;height:35px;padding:0;border:0;color:#70675e;background:transparent;font-size:10px;font-weight:650;letter-spacing:.04em;line-height:1}.archive-language i{margin:0 3px;color:#bbb2a8;font-style:normal}.archive-date{display:flex;align-items:center;height:35px;color:#70675e;font-size:10px;line-height:1}.archive-date b{margin-left:4px;color:#6c2635;font-family:Didot,serif;font-size:17px;font-weight:500;line-height:1}.archive-language:focus-visible{outline:2px solid #c8a869;outline-offset:3px}</style>
+    <style>header{grid-template-columns:35px 1fr auto}.archive-tools{display:flex;align-items:center;gap:12px;height:35px}.archive-language{display:flex;align-items:center;height:35px;padding:0;border:0;background:transparent;font-size:10px;font-weight:650;letter-spacing:.04em;line-height:1}.archive-language i{margin:0 3px;color:#bbb2a8;font-style:normal}.archive-language [data-language]{color:#b7aea5;transition:color .18s ease}.archive-language [data-language].is-current{color:#6c2635}.archive-date{display:flex;align-items:center;height:35px;color:#70675e;font-size:10px;line-height:1}.archive-date b{margin-left:4px;color:#6c2635;font-family:Didot,serif;font-size:17px;font-weight:500;line-height:1}.archive-language:focus-visible{outline:2px solid #c8a869;outline-offset:3px}</style>
   </head>
   <body>
     <main class="ticket-archive">
-      <header><a class="archive-back" href="home.html#wallet" aria-label="返回票夹">‹</a><span class="brand">Encore</span><div class="archive-tools"><button class="archive-language" id="archive-language" type="button" aria-label="切换语言"><span>中</span><i>/</i><span>EN</span></button><span class="archive-date"><span id="archive-month"></span><b id="archive-day"></b></span></div></header>
+      <header><a class="archive-back" href="home.html#wallet" aria-label="返回票夹">‹</a><span class="brand">Encore</span><div class="archive-tools"><button class="archive-language" id="archive-language" type="button" aria-label="切换语言"><span data-language="zh">中</span><i>/</i><span data-language="en">EN</span></button><span class="archive-date"><span id="archive-month"></span><b id="archive-day"></b></span></div></header>
       <section class="archive-intro"><p>YOUR COLLECTED ENCORES</p><h1>全部票根</h1><span id="archive-count"></span></section>
       <section class="depth-carousel" id="depth-carousel" aria-label="全部票根轮播" tabindex="0">
         <div class="depth-carousel__stage" id="ticket-stage"></div>
