@@ -22,6 +22,12 @@
         <p class="eyebrow" data-i18n="exploreEyebrow">CURATED FOR TONIGHT</p>
         <h1 id="explore-title" data-i18n="exploreTitle">今晚，想看哪一场？</h1>
         <p class="screen-intro" data-i18n="exploreIntro">从一场演出开始，给时间一个值得期待的结尾。</p>
+        <section class="resume-performance" id="resume-performance" hidden aria-live="polite">
+          <p id="resume-kicker">还有一场未完成的演出</p>
+          <h2 id="resume-title">Encore</h2>
+          <span id="resume-countdown">中场休息剩余 00:00</span>
+          <button id="resume-act-two" type="button">继续下半场 <i>→</i></button>
+        </section>
         <div class="show-list" id="show-list"></div>
       </section>
 
@@ -38,7 +44,9 @@
         </article>
         <div class="setting-card" id="settings-list" aria-label="本场演出信息"></div>
         <label class="save-show" id="save-show-row"><input id="save-show" type="checkbox" /><span class="save-show__box" aria-hidden="true">✓</span><span>将这场演出加入探索剧目</span></label>
+        <button class="remove-show" id="remove-saved-show" type="button" hidden>从探索剧目中移除</button>
         <a class="continue-button" id="print-ticket" href="ticket.html">打印入场券 <span>→</span></a>
+        <p class="custom-storage-note" id="custom-storage-note">你填写的演出信息与票根仅保存在当前设备，不会上传或共享。请勿填写或传播侵权、违法违规或侵犯他人权益的内容。</p>
       </section>
 
       <section class="screen" id="screen-wallet" aria-labelledby="wallet-title">
@@ -52,6 +60,8 @@
         </div>
         <p class="empty-note" data-i18n="emptyNote">第一场演出结束后，票根会在这里慢慢铺开。</p>
         <button class="continue-button" id="view-all-tickets" type="button" style="width:100%;margin-top:18px;border:0">查看全部票根 <span>→</span></button>
+        <p class="local-storage-note" id="local-storage-note">你的专注记录与票根签名仅保存在当前设备，不会上传或共享。</p>
+        <button class="clear-local-data" id="clear-local-data" type="button">清空本地记录</button>
       </section>
 
       <nav class="tab-bar" aria-label="主导航">
@@ -102,6 +112,5 @@
       </section>
     </main>
     <script src="home.js"></script>
-    <script>const isEncoreEnglish=localStorage.getItem("encore-language")==="en";document.querySelectorAll(".language-toggle [data-language]").forEach(node=>node.classList.toggle("is-current",node.dataset.language===(isEncoreEnglish?"en":"zh")));document.querySelector("#screen-wallet .eyebrow").textContent=isEncoreEnglish?"VIEW YOUR COLLECTION":"查看收藏";document.querySelector(".empty-note").textContent=isEncoreEnglish?"After your first performance, your tickets will gather here. Open one to sign it or save it as an image.":"第一场演出结束后，票根会在这里慢慢铺开。点开票根，还可以为它签名并保存为图片。";document.querySelector("#view-all-tickets").innerHTML=isEncoreEnglish?"View all tickets <span>→</span>":"查看全部票根 <span>→</span>";document.querySelector("#view-all-tickets").addEventListener("click",()=>{location.href="tickets.html";});</script>
   </body>
 </html>
