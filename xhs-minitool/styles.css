@@ -1,0 +1,210 @@
+:root {
+  color-scheme: light;
+  --ink: #24211e;
+  --muted: #817a73;
+  --paper: #f7f4ef;
+  --wine: #6c2635;
+  --wine-deep: #44131d;
+  --gold: #c8a869;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 87% 3%, rgba(255, 255, 255, .92), transparent 22rem),
+    var(--paper);
+}
+
+button, a { -webkit-tap-highlight-color: transparent; }
+
+.welcome-page {
+  width: min(100%, 520px);
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: max(26px, env(safe-area-inset-top)) 24px max(28px, env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+}
+
+.top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: Didot, "Iowan Old Style", "Times New Roman", serif;
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: -.055em;
+}
+
+.language-button {
+  min-width: 60px;
+  height: 35px;
+  padding: 0 10px;
+  border: 1px solid rgba(36, 33, 30, .10);
+  border-radius: 18px;
+  color: #6f6862;
+  background: rgba(255, 255, 255, .54);
+  font: 500 13px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.language-option { transition: color .2s ease, opacity .2s ease; }
+.language-option:not(.language-option--active) { color: #aaa39a; }
+.language-divider { margin: 0 3px; color: #c5bdb5; }
+
+.hero { padding: clamp(67px, 11vh, 118px) 4px 27px; }
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: var(--wine);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .165em;
+}
+
+h1 {
+  margin: 0;
+  font-family: Didot, "Iowan Old Style", "Songti SC", "STSong", serif;
+  font-size: clamp(38px, 9.8vw, 51px);
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: -.065em;
+}
+
+.intro {
+  margin: 19px 0 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  letter-spacing: .01em;
+}
+
+.stage-card {
+  position: relative;
+  height: min(45vw, 220px);
+  min-height: 166px;
+  padding-bottom: 31px;
+}
+
+.stage-card__glow {
+  position: absolute;
+  width: 210px;
+  height: 150px;
+  left: 50%;
+  top: -16px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse, rgba(218, 183, 112, .23), rgba(230, 205, 159, .08) 42%, transparent 70%);
+  filter: blur(5px);
+}
+
+.proscenium { position: absolute; inset: 0 20px 31px; overflow: hidden; border-radius: 112px 112px 3px 3px / 60px 60px 3px 3px; background: #4a1826; box-shadow: 0 8px 16px rgba(81, 31, 42, .18); }
+
+.proscenium::before {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  border: 1px solid rgba(225, 195, 137, .65);
+  border-bottom: 0;
+  border-radius: 104px 104px 0 0 / 55px 55px 0 0;
+  content: "";
+}
+
+.curtain {
+  position: absolute;
+  z-index: 3;
+  top: 1px;
+  bottom: 0;
+  width: 50%;
+  opacity: 1;
+  background: repeating-linear-gradient(90deg, #773345 0 5px, #8d4250 8px 13px, #692638 19px 25px);
+  box-shadow: none;
+}
+
+.curtain--left { left: 0; border-radius: 95px 0 0 0 / 52px 0 0 0; }
+.curtain--right { right: 0; border-radius: 0 95px 0 0 / 0 52px 0 0; }
+
+.stage-light {
+  position: absolute;
+  z-index: 1;
+  left: 38%;
+  bottom: 0;
+  width: 24%;
+  height: 64%;
+  background: linear-gradient(to bottom, rgba(218, 179, 102, .5), rgba(222, 190, 130, .03));
+  clip-path: polygon(35% 0, 65% 0, 100% 100%, 0 100%);
+}
+
+.stage-caption {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  left: 50%;
+  margin: 0;
+  padding: 7px 15px 6px;
+  border: 1px solid rgba(180, 143, 73, .48);
+  border-radius: 999px;
+  color: #6f5231;
+  background: #fbf6ec;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: .12em;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.welcome-actions { margin-top: auto; padding-top: 34px; text-align: center; }
+
+.primary-button {
+  min-height: 58px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  color: #fffaf0;
+  background: var(--wine);
+  box-shadow: 0 8px 16px rgba(94, 31, 45, .16);
+  font-size: 16px;
+  font-weight: 650;
+  letter-spacing: .015em;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.primary-button:active { transform: scale(.982); background: var(--wine-deep); }
+.primary-button:focus-visible, .language-button:focus-visible { outline: 3px solid rgba(200, 168, 105, .65); outline-offset: 3px; }
+.button-arrow { font-size: 20px; font-weight: 300; line-height: .8; }
+
+.theatre-transition { position:fixed; z-index:20; inset:0; display:grid; place-items:center; overflow:hidden; opacity:0; pointer-events:none; background:#16080d; transition:opacity .12s ease; }
+.theatre-transition__curtain { position:absolute; top:0; bottom:0; width:52%; background:repeating-linear-gradient(90deg,#551827 0 7px,#813247 10px 18px,#9e4c5c 21px 27px,#5a1728 31px 39px); box-shadow:inset -16px 0 22px rgba(33,4,12,.34); transition:transform .72s cubic-bezier(.16,.8,.22,1); }
+.theatre-transition__curtain--left { left:0; }.theatre-transition__curtain--right { right:0; transform:scaleX(-1); }
+.theatre-transition span { position:relative; z-index:1; opacity:0; color:rgba(246,224,184,.72); font-family:Didot,"Iowan Old Style",serif; font-size:18px; letter-spacing:.08em; transition:opacity .18s ease; }
+body.is-entering .theatre-transition { opacity:1; }
+body.is-entering .theatre-transition span { opacity:1; }
+body.is-opening .theatre-transition__curtain--left { transform:translateX(-104%); }
+body.is-opening .theatre-transition__curtain--right { transform:scaleX(-1) translateX(-104%); }
+body.is-opening .theatre-transition span { opacity:0; }
+
+.hint { margin: 16px 0 0; color: #aaa39a; font-size: 12px; }
+
+@media (min-width: 700px) {
+  body { background: #e9e4dd; }
+  .welcome-page { box-shadow: 0 0 60px rgba(35, 29, 21, .08); background: var(--paper); }
+}
+
+@media (max-height: 700px) {
+  .hero { padding-top: 48px; }
+  .stage-card { min-height: 132px; }
+  .welcome-actions { padding-top: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) { .theatre-transition, .theatre-transition__curtain, .theatre-transition span { transition-duration: .01ms; } }

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" /><meta name="theme-color" content="#f7f4ef" /><title>Encore</title><link rel="stylesheet" href="./router.css" /><link rel="stylesheet" href="./styles.css" data-style="welcome" disabled />
+<link rel="stylesheet" href="./home.css" data-style="home" disabled />
+<link rel="stylesheet" href="./ticket.css" data-style="ticket" disabled />
+<link rel="stylesheet" href="./focus.css" data-style="focus" disabled />
+<link rel="stylesheet" href="./focus-layout.css" data-style="focus" disabled />
+<link rel="stylesheet" href="./tickets.css" data-style="tickets" disabled /></head><body><div id="minitool-root"></div><template id="page-welcome">
+    <main class="welcome-page">
+      <nav class="top-bar" aria-label="顶部导航">
+        <span class="brand">Encore</span>
+        <button class="language-button" type="button" aria-label="Switch language">
+          <span class="language-option language-option--active" data-language="zh">中</span>
+          <span class="language-divider" aria-hidden="true">/</span>
+          <span class="language-option" data-language="en">EN</span>
+        </button>
+      </nav>
+
+      <section class="hero" aria-labelledby="welcome-title">
+        <p class="eyebrow" data-i18n="eyebrow">YOUR FOCUS, ON STAGE</p>
+        <h1 id="welcome-title" data-i18n="title">让专注，成为一场<br />值得谢幕的演出。</h1>
+        <p class="intro" data-i18n="intro">
+          选择一场演出，走进剧院。<br />
+          时间落幕时，收下一张属于你的票根。
+        </p>
+      </section>
+
+      <section class="stage-card" aria-label="Encore 剧院预览">
+        <div class="stage-card__glow"></div>
+        <div class="proscenium" aria-hidden="true">
+          <div class="curtain curtain--left"></div>
+          <div class="curtain curtain--right"></div>
+          <div class="stage-light"></div>
+        </div>
+      </section>
+
+      <div class="welcome-actions">
+        <a class="primary-button" href="#home" data-route="home">
+          <span data-i18n="start">进入剧院</span>
+          <span class="button-arrow" aria-hidden="true">→</span>
+        </a>
+        <p class="hint" data-i18n="hint">早点进场，选一个舒适的位置。</p>
+      </div>
+    </main>
+    <div class="theatre-transition" aria-hidden="true"><div class="theatre-transition__curtain theatre-transition__curtain--left"></div><div class="theatre-transition__curtain theatre-transition__curtain--right"></div><span>ENCORE</span></div>
+    
+  </template>
+<template id="page-home">
+    <main class="theatre-app">
+      <header class="app-header">
+        <a class="brand" href="#welcome" data-route="welcome">Encore</a>
+        <div class="header-controls">
+          <button class="language-toggle" id="language-toggle" type="button" aria-label="切换语言"><span data-language="zh">中</span><i>/</i><span data-language="en">EN</span></button>
+          <button class="quiet-button" type="button" aria-label="查看本月观演时长"><span id="current-month"></span><b id="current-day"></b></button>
+        </div>
+      </header>
+      <section class="resume-performance" id="resume-performance" hidden>
+        <p id="resume-performance-kicker">未完成的演出</p><h2 id="resume-performance-title"></h2><span id="resume-performance-meta"></span><button type="button" id="resume-performance-button">继续下半场 <i>→</i></button>
+      </section>
+
+      <section class="screen" id="screen-explore" aria-labelledby="explore-title">
+        <p class="eyebrow" data-i18n="exploreEyebrow">CURATED FOR TONIGHT</p>
+        <h1 id="explore-title" data-i18n="exploreTitle">今晚，想看哪一场？</h1>
+        <p class="screen-intro" data-i18n="exploreIntro">从一场演出开始，给时间一个值得期待的结尾。</p>
+        <div class="show-list" id="show-list"></div>
+      </section>
+
+      <section class="screen screen--active" id="screen-custom" aria-labelledby="custom-title">
+        <p class="eyebrow" data-i18n="customEyebrow">YOUR PERSONAL MATINÉE</p>
+        <h1 id="custom-title">为自己安排一场演出。</h1>
+        <p class="screen-intro" id="custom-subtitle">从剧名到座位，为自己安排好这一晚。</p>
+        <article class="poster-card" id="poster-card" aria-label="自定义音乐剧海报">
+          <div class="poster-stars" aria-hidden="true">✦　·　✦</div>
+          <div class="poster-arch" aria-hidden="true"><span></span></div>
+          <p class="poster-kicker" id="poster-kicker">AN ENCORE ORIGINAL</p>
+          <h2 id="poster-title">一段属于你的<br />安静时光</h2>
+          <p class="poster-meta" id="poster-meta">ONE NIGHT ONLY · 2026</p>
+        </article>
+        <div class="setting-card" id="settings-list" aria-label="本场演出信息"></div>
+        <label class="save-show" id="save-show-row"><input id="save-show" type="checkbox" /><span class="save-show__box" aria-hidden="true">✓</span><span>将这场演出加入探索剧目</span></label>
+        <button class="remove-show" id="remove-saved-show" type="button" hidden></button><a class="continue-button" id="print-ticket" href="#ticket" data-route="ticket">打印入场券 <span>→</span></a><p class="local-storage-note custom-storage-note" id="custom-storage-note">你填写的演出信息与票根仅保存在当前设备，不会上传或共享。请勿填写或传播侵权、违法违规或侵犯他人权益的内容。</p>
+      </section>
+
+      <section class="screen" id="screen-wallet" aria-labelledby="wallet-title">
+        <p class="eyebrow" data-i18n="walletEyebrow">YOUR COLLECTED ENCORES</p>
+        <h1 id="wallet-title" data-i18n="walletTitle">我的票夹</h1>
+        <p class="screen-intro" data-i18n="walletIntro">每张票根，都是一段已经好好度过的时间。</p>
+        <div class="ticket-fan" id="ticket-fan" aria-label="已观看演出票"></div>
+        <div class="wallet-summary">
+          <div><span data-i18n="monthTotal">本月观演</span><b id="month-minutes" data-i18n="zeroMinutes">0 分钟</b></div>
+          <div><span data-i18n="collected">已收藏</span><b id="ticket-total" data-i18n="zeroTickets">0 张票根</b></div>
+        </div>
+        <p class="empty-note" data-i18n="emptyNote">第一场演出结束后，票根会在这里慢慢铺开。</p>
+        <p class="local-storage-note" id="local-storage-note">你的专注记录与票根签名仅保存在当前设备，不会上传或共享。</p><button class="continue-button" id="view-all-tickets" type="button" style="width:100%;margin-top:18px;border:0">查看全部票根 <span>→</span></button><button class="clear-local-data" id="clear-local-data" type="button">清空本地记录</button>
+      </section>
+
+      <nav class="tab-bar" aria-label="主导航">
+        <button class="tab" type="button" data-screen="explore">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="m14.7 9.3-1.9 4.3-4.3 1.9 1.9-4.3 4.3-1.9Z"/></svg>
+          <span data-i18n="navExplore">探索剧目</span>
+        </button>
+        <button class="tab tab--active" type="button" data-screen="custom">
+          <span class="plus-mark" aria-hidden="true">+</span>
+          <span data-i18n="navCustom">自定义剧目</span>
+        </button>
+        <button class="tab" type="button" data-screen="wallet">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 8.5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-11a2 2 0 0 1-2-2v-7Z"/><path d="M8.5 6.5v11M15.5 6.5v11M4.5 10h3M16.5 10h3M4.5 14h3M16.5 14h3"/></svg>
+          <span data-i18n="navWallet">我的票夹</span>
+        </button>
+      </nav>
+      <section class="signature-dialog" id="signature-dialog" aria-labelledby="signature-title" aria-hidden="true" hidden>
+        <div class="signature-sheet">
+          <div class="signature-sheet__header">
+            <div><p id="signature-kicker">ENCORE / TICKET STUB</p><h2 id="signature-title">为我的票根签名</h2></div>
+            <button class="signature-close" id="signature-close" type="button" aria-label="关闭">×</button>
+          </div>
+          <p class="signature-ticket-name" id="signature-ticket-name"></p>
+          <div class="signature-canvas-wrap"><canvas id="signature-canvas" aria-label="在票根上签名或绘画"></canvas></div>
+          <div class="signature-tools" aria-label="马克笔颜色">
+            <span id="signature-tool-label">选择马克笔</span>
+            <button class="marker marker--gold is-selected" type="button" data-color="#b98a36" aria-label="金色"></button>
+            <button class="marker marker--silver" type="button" data-color="#8e949d" aria-label="银色"></button>
+            <button class="marker marker--blue" type="button" data-color="#3d6f9e" aria-label="蓝色"></button>
+            <button class="marker marker--black" type="button" data-color="#24211e" aria-label="黑色"></button>
+            <button class="signature-undo" id="signature-undo" type="button">撤回</button>
+            <button class="signature-clear" id="signature-clear" type="button">清除</button>
+          </div>
+          <p class="signature-note" id="signature-note">你的笔迹会保存到这张票根。</p>
+        </div>
+      </section>
+      <section class="ticket-detail" id="ticket-detail" aria-labelledby="ticket-detail-title" aria-hidden="true" hidden>
+        <article class="ticket-detail__paper">
+          <button class="ticket-detail__close" id="ticket-detail-close" type="button" aria-label="关闭">×</button>
+          <p>ENCORE / TICKET STUB</p>
+          <h2 id="ticket-detail-title"></h2>
+          <span id="ticket-detail-venue"></span>
+          <div class="ticket-detail__rule"></div>
+          <dl><div><dt>FOCUS TIME</dt><dd id="ticket-detail-time"></dd></div><div><dt>SEAT</dt><dd id="ticket-detail-seat"></dd></div><div><dt>STATUS</dt><dd id="ticket-detail-status"></dd></div></dl>
+          <img id="ticket-detail-signature" alt="" hidden />
+          <div class="ticket-detail__actions" style="position:absolute;z-index:3;right:20px;bottom:17px;display:flex;gap:8px"><button class="ticket-detail__download" id="ticket-detail-download" type="button" style="padding:8px 11px;border:1px solid #6c2635;border-radius:8px;color:#6c2635;background:#fffaf0;font-size:11px;font-weight:650">保存图片</button><button class="ticket-detail__sign" id="ticket-detail-sign" type="button" style="position:static">为我的票根签名</button></div>
+        </article>
+      </section>
+    </main>
+    
+    
+  </template>
+<template id="page-ticket">
+    <main class="ticket-page">
+      <header><button class="back" type="button" data-route="home#custom" aria-label="返回">‹</button><span class="brand">Encore</span><span class="header-space"></span></header>
+      <section class="print-intro"><p>TICKET STUB</p><h1>你的票根<br />正在打印。</h1><span class="printer-light"></span></section>
+      <section class="printer" aria-label="票根打印机">
+        <div class="printer-slot"></div>
+        <article class="printed-ticket" id="printed-ticket" style="width:310px;min-height:190px;height:190px;margin-top:78px;transform:rotate(90deg)">
+          <p class="ticket-brand">ENCORE / TICKET STUB</p><h2 id="ticket-title"></h2><p class="ticket-venue" id="ticket-venue"></p><div class="ticket-rule"></div>
+          <dl><div><dt>DATE</dt><dd id="ticket-date"></dd></div><div><dt>FOCUS</dt><dd id="ticket-time"></dd></div><div><dt>BREAK</dt><dd id="ticket-break"></dd></div><div><dt>SEAT</dt><dd id="ticket-seat"></dd></div></dl>
+        </article>
+      </section>
+      <a class="seat-button" href="#focus" data-route="focus">进入剧场落座 <span>→</span></a>
+    </main>
+    
+  </template>
+<template id="page-focus">
+    <main class="focus-page">
+      <header>
+        <span class="show-heading"><span class="brand" id="show-name">Encore</span><span class="act-label" id="act-label">· ACT I</span></span>
+        <span class="header-actions"><button class="leave" id="leave-button" type="button" disabled>离开剧场 · 15:00</button><button class="pause" id="pause-button" type="button">暂停</button></span>
+      </header>
+      <section class="stage is-entering" id="stage">
+        <div class="curtain curtain-left"></div><div class="curtain curtain-right"></div>
+        <div class="focus-content"><strong id="timer">90:00</strong><span id="focus-detail">演出已经开始，请将注意力留在此刻</span></div>
+        <div class="curtain-content"><p id="curtain-kicker">INTERMISSION</p><h1 id="curtain-title">中场休息</h1><strong id="curtain-timer">20:00</strong><span id="curtain-detail">稍后自动开始下半场</span><div class="intermission-actions" id="intermission-actions" hidden><button id="store-intermission" type="button">暂存本场，稍后继续</button><button id="leave-intermission" type="button">直接离开</button></div><button id="curtain-action" type="button">提前回到座位</button></div>
+      </section>
+      <small class="absence-rule" id="absence-rule">离开剧场时将暂停计时；超过 5 分钟未返回，本场将作废。</small>
+    </main>
+    
+  </template>
+<template id="page-tickets">
+    <main class="ticket-archive">
+      <header><a class="archive-back" href="#home" data-route="home#wallet" aria-label="返回票夹">‹</a><span class="brand">Encore</span><div class="archive-tools"><button class="archive-language" id="archive-language" type="button" aria-label="切换语言"><span data-language="zh">中</span><i>/</i><span data-language="en">EN</span></button><span class="archive-date"><span id="archive-month"></span><b id="archive-day"></b></span></div></header>
+      <section class="archive-intro"><p>YOUR COLLECTED ENCORES</p><h1>全部票根</h1><span id="archive-count"></span></section>
+      <section class="depth-carousel" id="depth-carousel" aria-label="全部票根轮播" tabindex="0">
+        <div class="depth-carousel__stage" id="ticket-stage"></div>
+        <button class="carousel-arrow carousel-arrow--prev" id="previous-ticket" type="button" aria-label="上一张票根">‹</button>
+        <button class="carousel-arrow carousel-arrow--next" id="next-ticket" type="button" aria-label="下一张票根">›</button>
+        <div class="carousel-dots" id="carousel-dots" aria-label="票根位置"></div>
+      </section>
+      <p class="archive-note" id="archive-note">左右滑动或使用箭头翻阅你的票根。</p>
+      <div class="archive-ticket-actions" id="archive-ticket-actions" hidden>
+        <button id="archive-sign" type="button">为我的票根签名</button>
+        <button id="archive-save" type="button">保存到相册</button>
+      </div>
+      <section class="archive-signature-dialog" id="archive-signature-dialog" hidden aria-modal="true" role="dialog">
+        <div class="archive-signature-panel">
+          <button class="archive-signature-close" id="archive-signature-close" type="button" aria-label="关闭">×</button>
+          <p id="archive-signature-kicker">为我的票根签名</p>
+          <div class="archive-signature-paper" id="archive-signature-paper">
+            <p>ENCORE / TICKET STUB</p><h2 id="archive-signature-title"></h2><span id="archive-signature-venue"></span><div></div>
+            <dl><div><dt id="signature-date-label">日期</dt><dd id="archive-signature-date"></dd></div><div><dt id="signature-focus-label">专注时长</dt><dd id="archive-signature-focus"></dd></div><div><dt id="signature-break-label">中场</dt><dd id="archive-signature-break"></dd></div><div><dt id="signature-seat-label">座位</dt><dd id="archive-signature-seat"></dd></div></dl>
+            <canvas id="archive-signature-canvas"></canvas>
+          </div>
+          <p class="archive-marker-label" id="archive-marker-label">选择马克笔</p>
+          <div class="archive-markers"><button class="archive-marker is-active" type="button" data-color="#b98a36" aria-label="金色"></button><button class="archive-marker" type="button" data-color="#9aa0a8" aria-label="银色"></button><button class="archive-marker" type="button" data-color="#285b98" aria-label="蓝色"></button><button class="archive-marker" type="button" data-color="#24211e" aria-label="黑色"></button></div>
+          <div class="archive-signature-tools"><button id="archive-signature-undo" type="button">撤回</button><button id="archive-signature-clear" type="button">清除</button></div>
+        </div>
+      </section>
+    </main>
+    
+  </template><script src="./router.js"></script></body></html>
